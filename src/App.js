@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './components/Navbar';
+import MovieList from './components/MovieList';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="overflow-x-hidden min-h-screen bg-[url('https://images.pexels.com/photos/2251206/pexels-photo-2251206.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cover bg-top bg-fixed text-white ">
+      <div className='pt-[10vh] '>
+        <Navbar />
+        <MovieList />
+        {/* <h2 className='text-3xl font-bold underline'>
+          movies
+          <pre>
+            {movies &&
+              movies.results &&
+              movies.results.map((movie) => {
+                return <h6 key={movie.id}>{movie.title}</h6>;
+              })}
+          </pre>
+        </h2> */}
+      </div>
     </div>
   );
 }

@@ -1,25 +1,24 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { allMovies } from '../store/slices/movie';
-import MovieItem from './MovieItem';
+import { topSeries } from '../store/slices/serie';
+import { useDispatch, useSelector } from 'react-redux';
+import TvItem from './TvItem';
 
-const MovieList = () => {
-  const movies = useSelector((state) => state.movie.all);
-  //   const movies = false;
+const TvList = () => {
+  const tvs = useSelector((state) => state.tv.all);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(allMovies());
+    dispatch(topSeries());
   }, [dispatch]);
 
   return (
     <>
       <div className='mb-60 container mx-auto max-w-screen-lg'>
         <div className='mt-20 flex justify-center items-center flex-wrap gap-2'>
-          {movies ? (
-            movies.results &&
-            movies.results.map((movie) => {
-              return <MovieItem key={movie.id} movie={movie} />;
+          {tvs ? (
+            tvs.results &&
+            tvs.results.map((tv) => {
+              return <TvItem key={tv.id} tv={tv} />;
             })
           ) : (
             <div className='fixed inset-0 top-[10vh] w-screen h-screen flex justify-center items-center backdrop-blur-sm'>
@@ -32,4 +31,4 @@ const MovieList = () => {
   );
 };
 
-export default MovieList;
+export default TvList;

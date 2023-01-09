@@ -8,7 +8,7 @@ const API_KEY = '9290ac27b9949585c1afebb041dee921';
 // Async
 // All Movies
 export const allMovies = createAsyncThunk('movieSlice/allMovies', async () => {
-  const res = await axios.get(`${BASE_URL}/top_rated?api_key=${API_KEY}`);
+  const res = await axios.get(`${BASE_URL}/popular?api_key=${API_KEY}`);
   console.log('res: ', res);
   return res.data;
 });

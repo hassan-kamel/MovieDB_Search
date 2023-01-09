@@ -22,7 +22,7 @@ const TvList = () => {
             })
           ) : (
             <div className='fixed inset-0 top-[10vh] w-screen h-screen flex justify-center items-center backdrop-blur-sm'>
-              <div class=' animate-spin inline-block w-12 h-12 border-t-red-600 border-4 rounded-full'></div>
+              <div className=' animate-spin inline-block w-12 h-12 border-t-red-600 border-4 rounded-full'></div>
             </div>
           )}
         </div>

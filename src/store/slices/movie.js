@@ -21,6 +21,16 @@ export const movieDetailed = createAsyncThunk(
     return res.data;
   },
 );
+// Movies Page
+export const moviesPage = createAsyncThunk(
+  'movieSlice/page',
+  async (pageNumber) => {
+    const res = await axios.get(
+      `${BASE_URL}/popular?api_key=${API_KEY}&page=${pageNumber}`,
+    );
+    return res.data;
+  },
+);
 
 const movieSlice = createSlice({
   initialState: {},
@@ -28,26 +38,27 @@ const movieSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     //All
-    // builder.addCase(allMovies.pending, (state, action) => {
-    //   console.log('action: ', action);
-    // });
-    // builder.addCase(allMovies.rejected, (state, action) => {
-    //   console.log('action: ', action);
-    // });
+    builder.addCase(allMovies.pending, (state, action) => {
+      console.log('action: ', action);
+      state.all = false;
+    });
     builder.addCase(allMovies.fulfilled, (state, action) => {
       console.log('action: ', action);
       state.all = action.payload;
     });
     //detailed
-    // builder.addCase(movieDetailed.pending, (state, action) => {
-    //   console.log('action: ', action);
-    // });
-    // builder.addCase(movieDetailed.rejected, (state, action) => {
-    //   console.log('action: ', action);
-    // });
     builder.addCase(movieDetailed.fulfilled, (state, action) => {
       console.log('action: ', action);
       state.detailed = action.payload;
+    });
+    // page
+    builder.addCase(moviesPage.pending, (state, action) => {
+      console.log('action: ', action);
+      state.all = false;
+    });
+    builder.addCase(moviesPage.fulfilled, (state, action) => {
+      console.log('action: ', action);
+      state.all = action.payload;
     });
   },
 });

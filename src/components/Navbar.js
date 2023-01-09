@@ -6,7 +6,7 @@ const Navbar = () => {
   console.log('pathname: ', pathname);
 
   return (
-    <nav className='px-3 bg-transparent fixed inset-0 '>
+    <nav className='px-3 bg-transparent fixed top-0 left-0 right-0 z-20 backdrop-blur-md backdrop-brightness-50'>
       <div className='container mx-auto max-w-screen-lg overflow-hidden'>
         <div className='flex justify-between items-center gap-2'>
           <div className=''>

@@ -2,6 +2,7 @@ import Navbar from './components/Navbar';
 import MovieList from './components/MovieList';
 import TvList from './components/TvList';
 import { Route, Routes } from 'react-router-dom';
+import MovieDetailed from './components/MovieDetailed';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/movies' element={<MovieList />} />
+          <Route path='/movies/:id' element={<MovieDetailed />} />
           <Route path='/series' element={<TvList />} />
         </Routes>
 

@@ -2,13 +2,13 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 //global
-const BASE_URL = 'https://api.themoviedb.org/3/movie';
+const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '9290ac27b9949585c1afebb041dee921';
 
 // Async
 // All Movies
 export const allMovies = createAsyncThunk('movieSlice/allMovies', async () => {
-  const res = await axios.get(`${BASE_URL}/popular?api_key=${API_KEY}`);
+  const res = await axios.get(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
   console.log('res: ', res);
   return res.data;
 });
@@ -16,7 +16,9 @@ export const allMovies = createAsyncThunk('movieSlice/allMovies', async () => {
 export const movieDetailed = createAsyncThunk(
   'movieSlice/detailed',
   async (movieID) => {
-    const res = await axios.get(`${BASE_URL}/${movieID}?api_key=${API_KEY}`);
+    const res = await axios.get(
+      `${BASE_URL}/movie/${movieID}?api_key=${API_KEY}`,
+    );
     console.log('res: ', res);
     return res.data;
   },
@@ -26,11 +28,18 @@ export const moviesPage = createAsyncThunk(
   'movieSlice/page',
   async (pageNumber) => {
     const res = await axios.get(
-      `${BASE_URL}/popular?api_key=${API_KEY}&page=${pageNumber}`,
+      `${BASE_URL}/movie/popular?api_key=${API_KEY}&page=${pageNumber}`,
     );
     return res.data;
   },
 );
+// genres
+export const movieGenre = createAsyncThunk('movieSlice/gneres', async () => {
+  const res = await axios.get(
+    `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`,
+  );
+  return res.data;
+});
 
 const movieSlice = createSlice({
   initialState: {},
@@ -59,6 +68,11 @@ const movieSlice = createSlice({
     builder.addCase(moviesPage.fulfilled, (state, action) => {
       console.log('action: ', action);
       state.all = action.payload;
+    });
+    // genres
+    builder.addCase(movieGenre.fulfilled, (state, action) => {
+      console.log('action: ', action);
+      state.genres = action.payload.genres;
     });
   },
 });

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { allMovies, moviesPage } from '../store/slices/movie';
+import { allMovies, movieGenre, moviesPage } from '../store/slices/movie';
 import MovieItem from './MovieItem';
 import ReactPaginate from 'react-paginate';
 
 const MovieList = () => {
   const movies = useSelector((state) => state.movie.all);
-  //   const movies = false;
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const MovieList = () => {
 
   return (
     <>
-      <div className='mb-60 container mx-auto max-w-screen-lg'>
+      <div className=' mb-60 container mx-auto max-w-screen-lg'>
         <div className='mt-20 flex justify-center items-center flex-wrap gap-2'>
           {movies ? (
             movies.results &&

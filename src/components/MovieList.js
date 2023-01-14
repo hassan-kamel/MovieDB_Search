@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { allMovies, movieGenre, moviesPage } from '../store/slices/movie';
+import { allMovies, moviesPage } from '../store/slices/movie';
 import MovieItem from './MovieItem';
 import ReactPaginate from 'react-paginate';
 

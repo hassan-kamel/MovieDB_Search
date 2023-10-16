@@ -1,4 +1,4 @@
-# Movie Database
+# Movie Database Search 
 
 Welcome to the Create React App Movie Database project! This guide will help you set up and run the project in your local development environment.
 
